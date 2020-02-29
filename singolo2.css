@@ -1,0 +1,269 @@
+body {
+  width: 1020px;
+  font-family: "Lato";
+}
+
+.portfolio {
+  padding-top: 46px;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 836px;
+  background-color: #2d303a;
+  color: #666d89;
+}
+
+h1 {
+  padding-bottom: 0px;
+  font-family: "Lato", "Black";
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.7;
+}
+
+p {
+  margin-top: -15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  width: 870px;
+  font-family: "Lato","Light";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+ul.portfolio-menu {
+  margin-top: 11px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  display: inline-flex;
+  list-style-type: none;
+}
+
+.portfolio-menu li {
+  margin: 0px 10px 0px 0px;
+  padding: 1px 6px 1px;
+  font-family: "Lato", "Regular";
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.012em;
+  border: 1px solid #666d89;
+  border-radius: 5px;
+}
+
+.portfolio-menu li:hover {
+  color: #dedede;
+  border-color: #dedede;
+}
+
+.portfolio-pictures {
+  margin-top: 3px;
+  width: 950px;
+  height: 650px;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: space-between;
+  overflow: hidden;
+}
+
+.portfolio-img {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 220px;
+  height: 187px;
+  overflow: hidden;
+}
+
+  .first-img {
+  background-position: -8px -11px;
+  background-image: url(assets/singolo2/first.png);
+}
+
+.second-img {
+  background-position: -10px -16px;
+  background-image: url(assets/singolo2/second.png);
+}
+
+.third-img {
+  background-position: -16px -2px;
+  background-image: url(assets/singolo2/third.png);
+}
+
+.fourth-img {
+  background-position: -82px -43px;
+  background-image: url(assets/singolo2/fourth.png);
+}
+
+.fifth-img {
+  background-position: -16px -4px;
+  background-image: url(assets/singolo2/fifth.png);
+}
+
+.six-img {
+  background-position: -141px -113px;
+  background-image: url(assets/singolo2/six.png);
+}
+
+.seven-img {
+  background-position: -11px -1px;
+  background-image: url(assets/singolo2/seven.png);
+}
+
+.eight-img {
+  background-position: -31px -39px;
+  background-image: url(assets/singolo2/eight.png);
+}
+
+.nine-img {
+  background-position: -144px -175px;
+  background-image: url(assets/singolo2/nine.png);
+}
+
+.ten-img {
+  background-position: -24px -2px;
+  background-image: url(assets/singolo2/ten.png);
+}
+
+.eleven-img {
+  background-position: -24px -32px;
+  background-image: url(assets/singolo2/eleven.png);
+}
+
+.twelve-img {
+  background-position: -36px -60px;
+  background-image: url(assets/singolo2/twelve.png);
+}
+
+.about {
+  padding-top: 27px;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 701px;
+  background-color: #f2f2f2;
+  color: #666d89;
+}
+
+.about p {
+  width: 940px;
+  font-weight: 400;
+  color: #767e9e;
+}
+
+.about-pictures {
+  margin-top: 45px;
+  width: 960px;
+  height: 650px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.avatar1 {
+  width: 300px;
+}
+
+.avatar2 {
+  margin-left: 19px;
+  width: 300px;
+}
+
+.avatar3 {
+  margin-left: 21px;
+  width: 300px;
+}
+
+.about-img {
+  margin: 0px;
+  padding: 0px;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+h2 {
+  margin-top: 11px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-family: "Lato", "Black";
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.7;
+  color:#666d89;
+}
+
+p.person-descr {
+  margin-top: 4px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  width: 300px;
+  font-family: "Lato", "Regular";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0em;
+  color: #767e9e;
+}
+
+ul.social-networks {
+  margin: 0px;
+  margin-top: 38px;
+  margin-left: -3px;
+  padding: 0px;
+  display: inline-flex;
+  list-style-type: none;
+}
+
+li.social-icon {
+  margin-top: -19px;
+  margin-left: 0px;
+  margin-right: 5px;
+  padding-right: 0px;
+  padding-left: 0px;
+  width: 36px;
+  height: 37px;
+  overflow: hidden;
+}
+
+.facebook {
+  background-position: 2px 2px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.facebook:hover {
+  background-position: 2px 38px;
+  background-image: url(assets/singolo2/social-icon.svg)
+}
+
+.google {
+  background-position: 118px 2px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.google:hover {
+  background-position: 118px 38px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.twitter {
+  background-position: 77px 2px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.twitter:hover {
+  background-position: 77px 38px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.linkedln {
+  background-position: 36px 2px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.linkedln:hover {
+  background-position: 35px 38px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
