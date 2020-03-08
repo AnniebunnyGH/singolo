@@ -1,0 +1,265 @@
+body {
+  width: 1020px;
+  font-family: "Lato";
+}
+
+section.quote {
+  margin: 0px;
+  padding: 52px 40px 0px;
+  height: 612px;
+  background-color: #f06c64;
+  color: #f0d8d9;
+}
+
+.quote h1 {
+  margin-top: 16px;
+  margin-bottom: 0px;
+  padding: 0px;
+  font-family: "Lato", "Black";
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.quote p {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 0px;
+  font-family: "Lato", "Light";
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+div.quote-body {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+form {
+  margin-top: 44px;
+  width: 620px;
+}
+
+input {
+  margin-bottom: 16px;
+  padding: 0px;
+  padding-left: 14px;
+  width: 605px;
+  height: 38px;
+  font-family: "Lato","Regular";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.7;
+  border: 0px;
+  border-radius: 5px;
+  background-color: #d6564f;
+}
+
+input::placeholder {
+  font-family: "Lato","Regular";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #f48c8f;
+}
+
+input[type="submit"] {
+  margin: 10px 0px;
+  padding: 0px;
+  width: 100px;
+  color: #f0d8d9;
+  border: 1px solid rgb(117, 17, 17);
+}
+
+input:invalid:not(:placeholder-shown) {
+  border: 1px solid rgb(117, 17, 17);
+}
+
+input:valid:not(:placeholder-shown) {
+  border: 1px solid rgb(17, 117, 70);
+}
+
+textarea {
+  padding-top: 8px;
+  padding-left: 14px;
+  width: 603px;
+  height: 192px;
+  resize: none;
+  font-family: "Lato","Regular";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.7;
+  border: 0px;
+  border-radius: 5px;
+  background-color: #d6564f;
+}
+
+textarea::placeholder {
+  font-family: "Lato","Regular";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #f48c8f;
+}
+
+input[type="submit"] {
+  margin: 10px 0px;
+  padding: 0px;
+  width: 100px;
+  color: #f0d8d9;
+}
+
+input[type="submit"]:valid {
+  border: none;
+}
+
+
+div.contacts {
+  margin: 42px 40px auto 21px;
+  width: 300px;
+}
+
+h2 {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Lato","Black";
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.contacts p {
+  margin-top: 8px;
+  width: 300px;
+  font-family:"Lato","Ragular";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: justify;
+}
+
+.contacts-info {
+  display: flex;
+  align-items: flex-start;
+}
+
+.contacts-logo {
+  margin: 0px;
+  padding: 0px 8px 0px 0px;
+  width: 15px;
+  height: 17px;
+  background-image: url(assets/singolo3/contacts-logo.png);
+  background-repeat: no-repeat;
+}
+
+.location {
+  margin-top: 20px;
+  font-family:"Lato","Ragular";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px
+}
+
+.location .contacts-logo {
+  background-position: -2px 3px;
+}
+
+a {
+  margin: -1px 0px 1px;
+  font-family:"Lato","Ragular";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #f0d8d9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.tel .contacts-logo {
+  background-position: -2px -19px;
+}
+
+.email .contacts-logo {
+  background-position: -2px -41px;
+}
+
+footer {
+  height: 76px;
+  margin: 0px;
+  font-family:"Lato","Ragular";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22px;
+  background-color: #2d303a;
+  color: #666d89;
+  display: flex;
+  justify-content: space-between;
+}
+
+footer p {
+  margin: 27px auto auto 41px;
+}
+
+ul.social-networks {
+  margin: 36px 32px 0px 0px;
+  padding: 0px;
+  display: inline-flex;
+  list-style-type: none;
+}
+
+li.social-icon {
+  margin-top: -19px;
+  margin-left: 0px;
+  margin-right: 5px;
+  padding-right: 0px;
+  padding-left: 0px;
+  width: 36px;
+  height: 37px;
+  overflow: hidden;
+}
+
+.facebook {
+  background-position: 2px 2px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.facebook:hover {
+  background-position: 2px 38px;
+  background-image: url(assets/singolo2/social-icon.svg)
+}
+
+.google {
+  background-position: 118px 2px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.google:hover {
+  background-position: 118px 38px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.twitter {
+  background-position: 77px 2px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.twitter:hover {
+  background-position: 77px 38px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.linkedln {
+  background-position: 36px 2px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
+
+.linkedln:hover {
+  background-position: 35px 38px;
+  background-image: url(assets/singolo2/social-icon.svg);
+}
