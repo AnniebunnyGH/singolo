@@ -1,8 +1,26 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  margin:0px;
+  padding:0px;
   width: 1020px;
 }
 
+header{
+  width: 1020px;
+  height: 89px;
+  position: fixed;
+  z-index: 6;
+  display: flex;
+  justify-content: space-between;
+  background-color: #2d303a;
+}
+
 section {
+  position: relative;
+  top: 95px;
   display: flex;
 }
 
@@ -14,12 +32,6 @@ section {
   font-weight: 700;
   line-height: 1.7;
   color: #ffffff;
-}
-
-.header {
-  height: 89px;
-  justify-content: space-between;
-  background-color: #2d303a;
 }
 
 ul.header-menu {
@@ -40,6 +52,10 @@ ul.header-menu {
   color: #ffffff;
 }
 
+li.hm-names.active {
+  color: #f06c64;
+}
+
 .header-menu li.hm-names:hover {
   color: #f06c64;
 }
@@ -48,14 +64,40 @@ li.middot {
   color: #494e62;
 }
 
+.partitioning {
+  position: relative;
+  top: 95px;
+}
+
 .slider {
+  width: 1020px;
   height: 594px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.slider_screen1 {
+  width: 1020px;
+  height: 594px;
+  position: absolute;
+  display: flex;
   justify-content: space-between;
   background-color: #f06c64;
 }
 
+.slider_screen2 {
+  width: 1020px;
+  height: 600px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  background-color: #648BF0;
+}
+
+
 svg.arrow {
   padding: 0px;
+  position: static;
   stroke: #ca4549;
 }
 
@@ -263,6 +305,11 @@ ul.portfolio-menu {
   border-color: #dedede;
 }
 
+.portfolio-menu li.active {
+  color: #dedede;
+  border-color: #dedede;
+}
+
 .portfolio-pictures {
   margin-top: 3px;
   width: 950px;
@@ -279,6 +326,12 @@ ul.portfolio-menu {
   width: 220px;
   height: 187px;
   overflow: hidden;
+}
+
+.portfolio-img.active{
+  width: 210px;
+  height: 177px;
+  border:5px solid  #F06C64;
 }
 
  .first-img {
@@ -690,6 +743,8 @@ a:hover {
 footer {
   height: 76px;
   margin: 0px;
+  position: relative;
+  top: 95px;
   font-family:"Lato","Ragular";
   font-size: 12px;
   font-weight: 400;

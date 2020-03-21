@@ -9,41 +9,43 @@
 </head>
 
 <body>
-  <section class="header">
+  <header class="header">
     <h1>SINGOLO</h1>
     <h1 style=" margin-left: 0px; color: #f06c64;">*</h1>
     <ul class="header-menu">
-      <li class="hm-names">HOME</li>
+      <li class="hm-names home-m">HOME</li>
       <li class="middot">&middot;</li>
-      <li class="hm-names">SERVICES</li>
+      <li class="hm-names services-m">SERVICES</li>
       <li class="middot">&middot;</li>
-      <li class="hm-names">PORTFOLIO</li>
+      <li class="hm-names portfolio-m">PORTFOLIO</li>
       <li class="middot">&middot;</li>
-      <li class="hm-names">ABOUT</li>
+      <li class="hm-names about-m">ABOUT</li>
       <li class="middot">&middot;</li>
-      <li class="hm-names">CONTACT</li>
+      <li class="hm-names contact-m">CONTACT</li>
     </ul>
-  </section>
-  <div style="background-color: #323645; height: 6px"></div>
+  </header>
+  <div style="width:1020px; position:fixed; top:89px; z-index:4; background-color: #323645; height: 6px"></div>
   <section class="slider">
-    <svg class="arrow" width="16" height="27" style="margin: 281px 0px auto 42px">
-      <polyline points="15,1 2,14 15,26" fill="None" stroke-width="5"></polyline>
-    </svg>
-    <div class="iphone">
-      <img class="phone" src="assets/singolo1/iphone.svg" width="216" height="459">
-      <div class="screen-img phone1">
+    <div class="slider_screen1">
+      <svg class="arrow left" width="16" height="27" style="margin: 281px 0px auto 42px">
+        <polyline points="15,1 2,14 15,26" fill="None" stroke-width="5"></polyline>
+      </svg>
+      <div class="iphone">
+        <img class="phone" src="assets/singolo1/iphone.svg" width="216" height="459">
+        <div class="screen-img phone1">
+        </div>
       </div>
-    </div>
-    <div class="iphone horizontal">
-      <img class="phone" src="assets/singolo1/iphone.svg" width="216" height="459">
-      <div class="screen-img phone2">
+      <div class="iphone horizontal">
+        <img class="phone" src="assets/singolo1/iphone.svg" width="216" height="459">
+        <div class="screen-img phone2">
+        </div>
       </div>
+      <svg class="arrow right" width="16px" height="27px" style="margin: 281px 40px auto 80px">
+        <polyline points="1,1 14,14 1,26" fill="None" stroke-width="5"></polyline>
+      </svg>
     </div>
-    <svg class="arrow" width="16px" height="27px" style="margin: 281px 40px auto 80px">
-      <polyline points="1,1 14,14 1,26" fill="None" stroke-width="5"></polyline>
-    </svg>
   </section>
-  <div style="background-color: #ea676b; height: 6px"></div>
+  <div class="partitioning" style="background-color: #ea676b; height: 6px"></div>
   <section class="services">
     <div>
       <h2>Our Services</h2>
@@ -104,14 +106,14 @@
       </li>
     </ul>
   </section>
-  <div style="background-color: #ffffff; height: 6px"></div>
+  <div class="partitioning" style="background-color: #ffffff; height: 6px"></div>
   <!--КОНЕЦ ПЕРВОЙ ЧАСТИ-->
   <section class="portfolio">
     <div>
       <h1>Portfolio</h1>
       <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
       <ul class="portfolio-menu">
-        <li>All</li>
+        <li class="active">All</li>
         <li>Web Design</li>
         <li>Graphic Design</li>
         <li>Artwork</li>
@@ -130,17 +132,9 @@
       <div class="portfolio-img ten-img"></div>
       <div class="portfolio-img eleven-img"></div>
       <div class="portfolio-img twelve-img"></div>
-      <!-- Проверка видимости дополнительных изображений
-      <div class="portfolio-img twelve-img"></div>
-      <div class="portfolio-img twelve-img"></div>
-      <div class="portfolio-img twelve-img"></div>
-      <div class="portfolio-img twelve-img"></div>
-      <div class="portfolio-img twelve-img"></div>
-      <div class="portfolio-img twelve-img"></div>
-      -->
     </div>
   </section>
-  <div style="height: 6px; background-color: #323746;"></div>
+  <div class="partitioning" style="height: 6px; background-color: #323746;"></div>
   <section class="about">
     <h1>About Us</h1>
     <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat
@@ -195,7 +189,7 @@
       </div>
     </div>
   </section>
-  <div style="height: 6px; background-color: white;"></div>
+  <div class="partitioning" style="height: 6px; background-color: white;"></div>
   <!--КОНЕЦ ВТОРОЙ ЧАСТИ-->
   <section class="quote">
     <h1>Get a Quote</h1>
@@ -204,12 +198,12 @@
       condimentum nibh.</p>
     <div class="quote-body">
       <form>
-        <input type="text" name="User name" placeholder="Name (Required)" pattern="[A-Za-zА-Яа-яЁё]{2,}" required>
-        <input type="email" name="User email" placeholder="Email (Required)"
+        <input type="text" name="User_name" placeholder="Name (Required)" pattern="[A-Za-zА-Яа-яЁё]{2,}" required>
+        <input type="email" name="User_email" placeholder="Email (Required)"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" required>
         <input type="text" name="Subject" placeholder="Subject" required>
         <textarea name="Text" placeholder="Describe your project in detail..."></textarea>
-        <input type="submit" value="Submit">
+        <input type="submit" name="submit-bottom" value="Submit">
       </form>
       <div class="contacts">
         <h2>Contact Information</h2>
@@ -229,7 +223,7 @@
       </div>
     </div>
   </section>
-  <div style="background-color: #ea676b; height: 6px;"></div>
+  <div class="partitioning" style="background-color: #ea676b; height: 6px;"></div>
   <footer>
     <p>&#169; Copyright 2013</p>
     <ul class="social-networks">
@@ -239,6 +233,7 @@
       <li class="social-icon linkedln"></li>
     </ul>
   </footer>
+  <script src="script.js"></script>
 </body>
 
 </html>
