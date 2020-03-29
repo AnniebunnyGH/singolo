@@ -1,21 +1,53 @@
 //Меня навигации и активность кнопочек
 let i = 0;
 let hm_height = 95;
-let li_hm_scroll = [
-  0,
-  document.querySelector("section.services").offsetTop - hm_height,
-  document.querySelector("section.portfolio").offsetTop - hm_height,
-  document.querySelector("section.about").offsetTop - hm_height,
-  document.querySelector("section.quote").offsetTop - hm_height
-];
-for (let item of document.querySelectorAll("li.hm-names")) {
+function let_breakpoints() {
+  return li_hm_scroll = [
+    0,
+    document.querySelector("section.services").offsetTop - hm_height,
+    document.querySelector("section.portfolio").offsetTop - hm_height,
+    document.querySelector("section.about").offsetTop - hm_height,
+    document.querySelector("section.quote").offsetTop - hm_height
+  ];
+}
+let_breakpoints();
+// При изменении размера документа
+window.addEventListener("resize", () => {
+  let_breakpoints();
+});
+
+for (let item of document.querySelectorAll(".header li.hm-names")) {
   item.addEventListener('click', () => {
-    i = Array.from(document.querySelectorAll(".hm-names")).indexOf(item);
+    i = Array.from(document.querySelectorAll(".header li.hm-names")).indexOf(item);
     window.scrollTo(0, li_hm_scroll[i]);
     console.log(i + " " + li_hm_scroll[i]);
   });
 }
 
+//Кнопочка меню при экране <768px
+document.querySelector('.menu-singolo button').addEventListener('click', () => {
+  document.querySelector('.main-menu-burger').classList.add("active");
+  document.querySelector('div.dark').style.display = "block";
+})
+document.querySelector('.main-menu-burger button').addEventListener('click', () => {
+  document.querySelector('.main-menu-burger').classList.remove("active");
+  document.querySelector('div.dark').style.display = "none";
+})
+//Скролл для всплывающего меню
+for (let item of document.querySelectorAll(".main-menu-burger li.hm-names")) {
+  item.addEventListener('click', () => {
+    console.log(li_hm_scroll);
+    i = Array.from(document.querySelectorAll(".main-menu-burger li.hm-names")).indexOf(item);
+    document.querySelector('.main-menu-burger').classList.remove("active");
+    document.querySelector('div.dark').style.display = "none";
+    window.scrollTo(0, li_hm_scroll[i]);
+    console.log(i + " b " + li_hm_scroll[i]);
+  });
+}
+
+
+
+//Активация кнопочек в меня во время листания страницы
 window.addEventListener('scroll', () => {
   for (i = 0; i < 4; i++) {
     if (window.scrollY >= li_hm_scroll[i] && window.scrollY < li_hm_scroll[i + 1]) {
@@ -32,116 +64,129 @@ window.addEventListener('scroll', () => {
   }
 });
 
-//слайдер
-let slider_screens = ["slider_screen1", "slider_screen2"];
-let slider_num = 0;
-//анимация листания
-function slider_animation(mode) {
-  //создание боковых скринов
-  let item_now = document.querySelector(".slider div");
+//Слайдер-экраны телефонов
+function iphone_activation() {
+  for (i = 0; i < document.querySelectorAll("svg.phone-button").length; i++) {
+    let item = document.querySelectorAll("svg.phone-button")[i];
+    let item_screen = document.querySelectorAll("svg.phone-button + div")[i];
+    item.addEventListener('click', () => {
+      if (item_screen.classList.contains("screen-off")) {
+        item_screen.classList.remove("screen-off");
+      } else {
+        item_screen.classList.add("screen-off");
+      }
+    })
+  }
+}
+//Слайдер-смена слайдов
+function arrow_left_click() {
+  slider_animation("left", "div.slider-screen");
+}
+function arrow_right_click() {
+  slider_animation("right", "div.slider-screen");
+}
+document.querySelector("svg.arrow.left").addEventListener('click', arrow_left_click);
+document.querySelector("svg.arrow.right").addEventListener('click', arrow_right_click);
+let slider_screens_classes = ["slider-screen-1", "slider-screen-2"];
+let slider_screen1 = document.querySelector("div.slider-screen-1").cloneNode(true);
+let slider_screen2 = document.querySelector("div.slider-screen-2").cloneNode(true);
+let slider_screens = [slider_screen1, slider_screen2];
+document.querySelector("div.slider-screen").append(slider_screen1);
+iphone_activation();
+//Функция создания боковых слайдов
+//item = "div.slider-screen-1";
+function add_slides(item) {
+  let item_now = document.querySelector(item);
   let item_left = item_now.cloneNode(true);
   let item_right = item_now.cloneNode(true);
-  item_now.style.left = "";
-  item_now.style.right = "";
-  item_left.style.left = "";
-  item_left.style.right = "";
-  item_right.style.left = "";
-  item_right.style.right = "";
-  for (i = 0; i < slider_screens.length; i++) {
-    if (item_now.classList.contains(slider_screens[i])) {
-      item_left.classList.remove(slider_screens[i]);
-      item_right.classList.remove(slider_screens[i]);
-      if (i != 0 && i != slider_screens.length - 1) {
-        item_left.classList.add(slider_screens[i - 1]);
-        item_right.classList.add(slider_screens[i + 1]);
+  for (i = 0; i < slider_screens_classes.length; i++) { //создание нужных классов у боковых экранов
+    if (item_now.classList.contains(slider_screens_classes[i])) {
+      item_left.classList.remove(slider_screens_classes[i]);
+      item_right.classList.remove(slider_screens_classes[i]);
+      if (i != 0 && i != slider_screens_classes.length - 1) {
+        item_left.classList.add(slider_screens_classes[i - 1]);
+        item_right.classList.add(slider_screens_classes[i + 1]);
       } else if (i == 0) {
-        item_left.classList.add(slider_screens[slider_screens.length - 1]);
-        item_right.classList.add(slider_screens[i + 1]);
-      } else if (i == slider_screens.length - 1) {
-        item_right.classList.add(slider_screens[0]);
-        item_left.classList.add(slider_screens[i - 1]);
+        item_left.classList.add(slider_screens_classes[slider_screens_classes.length - 1]);
+        item_right.classList.add(slider_screens_classes[i + 1]);
+      } else if (i == slider_screens_classes.length - 1) {
+        item_right.classList.add(slider_screens_classes[0]);
+        item_left.classList.add(slider_screens_classes[i - 1]);
       }
     }
   }
-  item_left.style.zIndex = "5";
-  item_right.style.zIndex = "5";
-  item_right.style.right = "1020px";
-  item_left.style.left = "1020px";
-  document.querySelector("section.slider").prepend(item_left);
-  document.querySelector("section.slider").append(item_right);
-  //сама анимация
-  let animation_velocity = 0.7;
-  let animation_width = Number(String(getComputedStyle(item_now).width).match(/[0-9]+/));
-  let animation_time = animation_width / animation_velocity;
-  let start = performance.now();
-  function draw(progress) {
-    if (mode == "left") {
-      item_now.style.left = animation_width * progress + "px";
-      item_left.style.left = (-animation_width + animation_width * progress) + "px";
+  for (i = 0; i < slider_screens_classes.length; i++) {// создание соответсвующих клонов
+    if (item_left.classList.contains(slider_screens_classes[i])) {
+      item_left = slider_screens[i].cloneNode(true);
     }
-    if (mode == "right") {
-      item_now.style.right = (animation_width * progress) + "px";
-      item_right.style.right = (-animation_width + animation_width * progress) + "px";
+    if (item_right.classList.contains(slider_screens_classes[i])) {
+      item_right = slider_screens[i].cloneNode(true);
     }
   }
-  let animation = window.setInterval(() => {
-    let progress = (performance.now() - start) / animation_time;
-    draw(progress);
+  item_left.style.zIndex = "6";
+  item_right.style.zIndex = "6";
+  document.querySelector("div.slider-screen").prepend(item_left);
+  document.querySelector("div.slider-screen").append(item_right);
+}
+
+//Функция анимации перехода(можно менять функцию прогресса ^^)
+//slide_block="div.slider-screen"
+function slider_animation(mode, slide_block) {
+  let window_width_normalize = Number(String(getComputedStyle(document.documentElement).width).match(/[0-9]+/));
+  if (window_width_normalize > 1020) { window_width_normalize = 1020; }
+  document.querySelector("svg.arrow.left").removeEventListener('click', arrow_left_click);
+  document.querySelector("svg.arrow.right").removeEventListener('click', arrow_right_click);
+  add_slides(slide_block + ">div");
+  document.querySelector("div.slider-screen").style.transform = "translateX(-" + window_width_normalize + ")px";
+  let item_left = document.querySelectorAll(slide_block + ">div")[0];
+  let item_now = document.querySelectorAll(slide_block + ">div")[1];
+  let item_right = document.querySelectorAll(slide_block + ">div")[2];
+  let animation_velocity = 0.5;
+  let animation_width = Number(String(getComputedStyle(document.querySelector(slide_block)).width).match(/[0-9]+/)) / 3;
+  let animation_time = animation_width / animation_velocity;
+  function draw(progress) {
+    if (mode == "left") {
+      document.querySelector(slide_block).style.transform = "translateX(" + (-window_width_normalize + animation_width * progress) + "px)";
+    }
+    if (mode == "right") {
+      document.querySelector(slide_block).style.transform = "translateX(" + (-window_width_normalize - animation_width * progress) + "px)";
+    }
+  }
+  let start = performance.now();
+  let animation = requestAnimationFrame(function animate() {
+    let time = (performance.now() - start) / animation_time;
+    let progress = time;
     if (progress >= 1) {
+      cancelAnimationFrame(animation);
       if (mode == "left") {
         item_now.remove();
         item_right.remove();
         item_left.style.zIndex = "4";
-        item_left.style.left = "0px";
-        document.querySelector("svg.arrow.left").addEventListener('click', () => {
-          slider_animation("left");
-        })
-        document.querySelector("svg.arrow.right").addEventListener('click', () => {
-          slider_animation("right");
-        })
-      } else if (mode = "right") {
+      }
+      if (mode == "right") {
         item_now.remove();
         item_left.remove();
         item_right.style.zIndex = "4";
-        item_right.style.right = "0px";
-        document.querySelector("svg.arrow.left").addEventListener('click', () => {
-          slider_animation("left");
-        })
-        document.querySelector("svg.arrow.right").addEventListener('click', () => {
-          slider_animation("right");
-        })
       }
-      clearInterval(animation);
+      document.querySelector(slide_block).style.transform = "translateX(0px)";
+      document.querySelector("svg.arrow.left").addEventListener('click', arrow_left_click);
+      document.querySelector("svg.arrow.right").addEventListener('click', arrow_right_click);
+      iphone_activation()
     } else {
       draw(progress);
+      requestAnimationFrame(animate)
     }
-  }, animation_velocity);
+  })
 }
-//стрелочки для переключения
-document.querySelector("svg.arrow.left").addEventListener('click', () => {
-  slider_animation("left");
-})
-document.querySelector("svg.arrow.right").addEventListener('click', () => {
-  slider_animation("right");
-})
-
-//let static_anim = setInterval(slider_animation, 5000, "right");
 
 //Меню навигации портфолио и составление портфолио
-let portfolio_img = document.querySelectorAll(".portfolio-img");
-
 //первая кнопочка
 document.querySelectorAll(".portfolio-menu li")[0].addEventListener('click', () => {
   for (let item of document.querySelectorAll(".portfolio-menu li")) {
     item.classList.remove('active');
   }
-  document.querySelectorAll(".portfolio-menu li")[0].classList.add('active');
-  i = 0;
-  while (document.querySelectorAll('.portfolio-img').length != 0) {
-    document.querySelectorAll('.portfolio-img')[0].remove();
-  }
-  for (i = 0; i < portfolio_img.length; i++) {
-    document.querySelector(".portfolio-pictures").append(portfolio_img[i]);
+  for (i = 0; i < document.querySelectorAll('.portfolio-img').length; i++) {
+    document.querySelectorAll('.portfolio-img')[i].style.order = String(i);
   }
 });
 //Вторая
@@ -150,10 +195,9 @@ document.querySelectorAll(".portfolio-menu li")[1].addEventListener('click', () 
     item.classList.remove('active');
   }
   document.querySelectorAll(".portfolio-menu li")[1].classList.add('active');
-  for (i = document.querySelectorAll('.portfolio-img').length - 1; i >= 0; i--) {
-    let j = Math.floor(i + Math.random() * (document.querySelectorAll('.portfolio-img').length - i));
-    document.querySelectorAll('.portfolio-img')[document.querySelectorAll('.portfolio-img').length - 1].after(document.querySelectorAll('.portfolio-img')[j]);
-    //document.querySelectorAll('.portfolio-img')[j].remove();
+  for (i = 0; i < document.querySelectorAll('.portfolio-img').length; i++) {
+    let j = Math.floor(Math.random() * (document.querySelectorAll('.portfolio-img').length * 10));
+    document.querySelectorAll('.portfolio-img')[i].style.order = String(j);
   }
 });
 //Третья
@@ -162,10 +206,9 @@ document.querySelectorAll(".portfolio-menu li")[2].addEventListener('click', () 
     item.classList.remove('active');
   }
   document.querySelectorAll(".portfolio-menu li")[2].classList.add('active');
-  for (i = document.querySelectorAll('.portfolio-img').length - 1; i >= 0; i--) {
-    let j = Math.floor(i + Math.random() * (document.querySelectorAll('.portfolio-img').length - i));
-    document.querySelectorAll('.portfolio-img')[document.querySelectorAll('.portfolio-img').length - 1].after(document.querySelectorAll('.portfolio-img')[j]);
-    //document.querySelectorAll('.portfolio-img')[j].remove();
+  for (i = 0; i < document.querySelectorAll('.portfolio-img').length; i++) {
+    let j = Math.floor(Math.random() * (document.querySelectorAll('.portfolio-img').length * 10));
+    document.querySelectorAll('.portfolio-img')[i].style.order = String(j);
   }
 });
 //Четверая
@@ -174,10 +217,9 @@ document.querySelectorAll(".portfolio-menu li")[3].addEventListener('click', () 
     item.classList.remove('active');
   }
   document.querySelectorAll(".portfolio-menu li")[3].classList.add('active');
-  for (i = document.querySelectorAll('.portfolio-img').length - 1; i >= 0; i--) {
-    let j = Math.floor(i + Math.random() * (document.querySelectorAll('.portfolio-img').length - i));
-    document.querySelectorAll('.portfolio-img')[document.querySelectorAll('.portfolio-img').length - 1].after(document.querySelectorAll('.portfolio-img')[j]);
-    //document.querySelectorAll('.portfolio-img')[j].remove();
+  for (i = 0; i < document.querySelectorAll('.portfolio-img').length; i++) {
+    let j = Math.floor(Math.random() * (document.querySelectorAll('.portfolio-img').length * 10));
+    document.querySelectorAll('.portfolio-img')[i].style.order = String(j);
   }
 });
 
