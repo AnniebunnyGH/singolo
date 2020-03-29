@@ -44,23 +44,38 @@ for (let item of document.querySelectorAll(".main-menu-burger li.hm-names")) {
     console.log(i + " b " + li_hm_scroll[i]);
   });
 }
-
+//Активность кнопочек для бургер-меню
+window.addEventListener('scroll', () => {
+  for (i = 0; i < 4; i++) {
+    if (window.scrollY >= li_hm_scroll[i] && window.scrollY < li_hm_scroll[i + 1]) {
+      document.querySelectorAll(".main-menu-burger li.hm-names")[i].classList.add('active');
+    } else {
+      document.querySelectorAll(".main-menu-burger li.hm-names")[i].classList.remove('active');
+    }
+  }
+  if (document.querySelectorAll(".main-menu-burger li.hm-names")[4].classList.contains('active')) { document.querySelectorAll(".main-menu-burger li.hm-names")[3].classList.remove('active'); }
+  if (window.scrollY >= li_hm_scroll[3] && (window.scrollY + 1100) >= document.querySelector("footer").offsetTop) {
+    document.querySelectorAll(".main-menu-burger li.hm-names")[4].classList.add('active');
+  } else {
+    document.querySelectorAll(".main-menu-burger li.hm-names")[4].classList.remove('active');
+  }
+})
 
 
 //Активация кнопочек в меня во время листания страницы
 window.addEventListener('scroll', () => {
   for (i = 0; i < 4; i++) {
     if (window.scrollY >= li_hm_scroll[i] && window.scrollY < li_hm_scroll[i + 1]) {
-      document.querySelectorAll("li.hm-names")[i].classList.add('active');
+      document.querySelectorAll(".header li.hm-names")[i].classList.add('active');
     } else {
-      document.querySelectorAll("li.hm-names")[i].classList.remove('active');
+      document.querySelectorAll(".header li.hm-names")[i].classList.remove('active');
     }
   }
-  if (document.querySelectorAll("li.hm-names")[4].classList.contains('active')) { document.querySelectorAll("li.hm-names")[3].classList.remove('active'); }
+  if (document.querySelectorAll(".header li.hm-names")[4].classList.contains('active')) { document.querySelectorAll(".header li.hm-names")[3].classList.remove('active'); }
   if (window.scrollY >= li_hm_scroll[3] && (window.scrollY + 1100) >= document.querySelector("footer").offsetTop) {
-    document.querySelectorAll("li.hm-names")[4].classList.add('active');
+    document.querySelectorAll(".header li.hm-names")[4].classList.add('active');
   } else {
-    document.querySelectorAll("li.hm-names")[4].classList.remove('active');
+    document.querySelectorAll(".header li.hm-names")[4].classList.remove('active');
   }
 });
 
@@ -180,13 +195,20 @@ function slider_animation(mode, slide_block) {
 }
 
 //Меню навигации портфолио и составление портфолио
+let portfolio_img = document.querySelectorAll(".portfolio-img");
+
 //первая кнопочка
 document.querySelectorAll(".portfolio-menu li")[0].addEventListener('click', () => {
   for (let item of document.querySelectorAll(".portfolio-menu li")) {
     item.classList.remove('active');
   }
-  for (i = 0; i < document.querySelectorAll('.portfolio-img').length; i++) {
-    document.querySelectorAll('.portfolio-img')[i].style.order = String(i);
+  document.querySelectorAll(".portfolio-menu li")[0].classList.add('active');
+  i = 0;
+  while (document.querySelectorAll('.portfolio-img').length != 0) {
+    document.querySelectorAll('.portfolio-img')[0].remove();
+  }
+  for (i = 0; i < portfolio_img.length; i++) {
+    document.querySelector(".portfolio-pictures").append(portfolio_img[i]);
   }
 });
 //Вторая
@@ -195,9 +217,9 @@ document.querySelectorAll(".portfolio-menu li")[1].addEventListener('click', () 
     item.classList.remove('active');
   }
   document.querySelectorAll(".portfolio-menu li")[1].classList.add('active');
-  for (i = 0; i < document.querySelectorAll('.portfolio-img').length; i++) {
-    let j = Math.floor(Math.random() * (document.querySelectorAll('.portfolio-img').length * 10));
-    document.querySelectorAll('.portfolio-img')[i].style.order = String(j);
+  for (i = document.querySelectorAll('.portfolio-img').length - 1; i >= 0; i--) {
+    let j = Math.floor(i + Math.random() * (document.querySelectorAll('.portfolio-img').length - i));
+    document.querySelectorAll('.portfolio-img')[document.querySelectorAll('.portfolio-img').length - 1].after(document.querySelectorAll('.portfolio-img')[j]);
   }
 });
 //Третья
@@ -206,9 +228,9 @@ document.querySelectorAll(".portfolio-menu li")[2].addEventListener('click', () 
     item.classList.remove('active');
   }
   document.querySelectorAll(".portfolio-menu li")[2].classList.add('active');
-  for (i = 0; i < document.querySelectorAll('.portfolio-img').length; i++) {
-    let j = Math.floor(Math.random() * (document.querySelectorAll('.portfolio-img').length * 10));
-    document.querySelectorAll('.portfolio-img')[i].style.order = String(j);
+  for (i = document.querySelectorAll('.portfolio-img').length - 1; i >= 0; i--) {
+    let j = Math.floor(i + Math.random() * (document.querySelectorAll('.portfolio-img').length - i));
+    document.querySelectorAll('.portfolio-img')[document.querySelectorAll('.portfolio-img').length - 1].after(document.querySelectorAll('.portfolio-img')[j]);
   }
 });
 //Четверая
@@ -217,11 +239,21 @@ document.querySelectorAll(".portfolio-menu li")[3].addEventListener('click', () 
     item.classList.remove('active');
   }
   document.querySelectorAll(".portfolio-menu li")[3].classList.add('active');
-  for (i = 0; i < document.querySelectorAll('.portfolio-img').length; i++) {
-    let j = Math.floor(Math.random() * (document.querySelectorAll('.portfolio-img').length * 10));
-    document.querySelectorAll('.portfolio-img')[i].style.order = String(j);
+  for (i = document.querySelectorAll('.portfolio-img').length - 1; i >= 0; i--) {
+    let j = Math.floor(i + Math.random() * (document.querySelectorAll('.portfolio-img').length - i));
+    document.querySelectorAll('.portfolio-img')[document.querySelectorAll('.portfolio-img').length - 1].after(document.querySelectorAll('.portfolio-img')[j]);
   }
 });
+
+//Подсветка картинок
+for (let item of document.querySelectorAll('.portfolio-img')) {
+  item.addEventListener('click', () => {
+    for (let item1 of document.querySelectorAll('.portfolio-img')) {
+      item1.classList.remove('active');
+    }
+    item.classList.add('active');
+  });
+}
 
 //Подсветка картинок
 for (let item of document.querySelectorAll('.portfolio-img')) {
